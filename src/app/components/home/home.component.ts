@@ -1,3 +1,4 @@
+import { ProviderService } from './../../service/provider/provider.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private serv:ProviderService) { }
+  
+  ramdom: any
+  
   ngOnInit(): void {
+    this.serv.getRestaurant("Chicago").subscribe((e:any)=>{
+      this.ramdom = e.results;
+      console.log(e);
+    });
   }
-
 }

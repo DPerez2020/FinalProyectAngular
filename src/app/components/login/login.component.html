@@ -1,1 +1,14 @@
 <p>login works!</p>
+<div>   
+    <form [formGroup]="loginForm">
+        <label>userEmail</label>
+        <input type="text" formControlName="userEmail">
+        
+        <label>userPassword</label>
+        <input type="text" formControlName="userPassword">
+
+    </form>
+    <button [disabled]="loginForm.invalid" (click)="login()">Login</button>
+</div>
+
+

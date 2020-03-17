@@ -1,1 +1,14 @@
-<p>register works!</p>
+<div>   
+    <form [formGroup]="registerForm">
+        
+        <label>userEmail</label>
+        <input type="text" formControlName="userEmail">
+        
+        <label>userPassword</label>
+        <input type="text" formControlName="userPassword">
+
+    </form>
+    <button [disabled]="registerForm.invalid" (click)="createUser()">Registrarme</button>
+</div>
+
+
