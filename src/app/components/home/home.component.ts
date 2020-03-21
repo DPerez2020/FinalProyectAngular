@@ -20,14 +20,8 @@ export class HomeComponent implements OnInit {
     //Verifica si el usuario esta logueado para redirigirlo al dashboard
     this.islogued().then((data)=>{
       //En caso de que no carga la data inicial
-      if(isNull(data)){
-        this.serv.getRestaurant("Chicago").subscribe((e:any)=>{
-          this.restaurant = e.restaurants;
-          console.log(e.restaurants);
-        });
-      }
-      else{
-        this.router.navigate(['dashboard']);
+      if(!isNull(data)){
+        this.router.navigate(['dashboard']); 
       }
     });
     }

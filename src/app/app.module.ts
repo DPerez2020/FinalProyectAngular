@@ -23,6 +23,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeroComponent } from './components/partials/hero/hero.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ReserveComponent } from './components/reserve/reserve.component';
+import { FilterComponent } from './components/partials/filter/filter.component';
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import { ReserveComponent } from './components/reserve/reserve.component';
     AppComponent,
      LoginComponent, RegisterComponent, HomeComponent, NotFoundComponent, 
      NavigationComponent, FooterComponent, DashboardComponent, HeroComponent,
-      ProfileComponent, ReserveComponent,DetailsComponent
+      ProfileComponent, ReserveComponent,DetailsComponent, FilterComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +47,6 @@ import { ReserveComponent } from './components/reserve/reserve.component';
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
