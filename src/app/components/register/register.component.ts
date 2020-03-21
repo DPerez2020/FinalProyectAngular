@@ -1,11 +1,9 @@
 import { AuthService } from '../../service/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { __await } from 'tslib';
-
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -17,9 +15,8 @@ export class RegisterComponent implements OnInit {
   //Global variables
   registerForm: FormGroup;
   itemRef: any;
-  //Global variables
-
-  constructor(private router: Router, private userAuth: AngularFireAuth, private rltDatabase: AngularFireDatabase,
+  
+  constructor(private router: Router,private location:Location,
               private formBuilder: FormBuilder,private AuthService: AuthService) { }
  //Inicializando el formulario
   ngOnInit(): void {
@@ -27,7 +24,6 @@ export class RegisterComponent implements OnInit {
       userEmail: ['', [Validators.required, Validators.email]],
       userPassword: ['', [Validators.required, Validators.minLength(8),Validators.maxLength(16)]],
     });
-    //Inicializando el formulario
   }
 
   // Funcion para crear nuevos usuarios en el sistema
@@ -44,11 +40,10 @@ export class RegisterComponent implements OnInit {
       alert(err);
     });
   }
-  // Funcion para crear nuevos usuarios en el sistema
 
-
+  // Funcion para ir al login
   goToLogin() {
     this.router.navigate(['/login']);
+    location.reload();
   }
-  // Funcion para ir al login
 }

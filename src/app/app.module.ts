@@ -1,3 +1,4 @@
+import { DetailsComponent } from './components/details/details.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -15,11 +16,21 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirePerformanceModule } from '@angular/fire/performance';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { NavigationComponent } from './components/partials/navigation/navigation.component';
+import { FooterComponent } from './components/partials/footer/footer.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HeroComponent } from './components/partials/hero/hero.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ReserveComponent } from './components/reserve/reserve.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-     LoginComponent, RegisterComponent, HomeComponent, NotFoundComponent
+     LoginComponent, RegisterComponent, HomeComponent, NotFoundComponent, 
+     NavigationComponent, FooterComponent, DashboardComponent, HeroComponent,
+      ProfileComponent, ReserveComponent,DetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireStorageModule,
     AngularFirePerformanceModule,
     FormsModule,
+    ModalModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule
   ],

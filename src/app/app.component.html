@@ -1,6 +1,6 @@
-
-  <router-outlet></router-outlet>
-<!--
-  <app-login></app-login>
-
--->
+<app-navigation></app-navigation>
+<app-hero [hidden]="!hideElement"></app-hero>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

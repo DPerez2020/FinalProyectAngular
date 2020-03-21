@@ -1,9 +1,8 @@
 import { AuthService } from '../../service/auth/auth.service';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private formBuilder:FormBuilder, private router:Router,private authService:AuthService) { }
+  constructor(private formBuilder:FormBuilder, private router:Router,private authService:AuthService, private location:Location) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -28,20 +27,17 @@ export class LoginComponent implements OnInit {
     let pwd=this.loginForm.value.userPassword;
     var result= this.authService.loginEmailPasswordUser(email,pwd);
     //Obteniendo datos del formulario
-
     result.then((res)=>{
-      //console.log("Login Result:");
-      //console.log(res);
-      //this.router.navigate([''])
+      this.router.navigate(['dashboard'])
+      this.location.replaceState('dashboard');
+      location.reload();
+      this.islogued();
     }).catch((err)=>{
       alert(err);
     });
   };
 
-  async islogued(){
-    await this.authService.isAuth().then((user)=>{
-      console.log("Is logged");
-      console.log(user);
-  })
-}
+   async islogued(){
+    console.log(await this.authService.isAuth());
+  }
 }
