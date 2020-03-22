@@ -16,9 +16,11 @@ export class AuthService {
 
     await this.Auth.auth.setPersistence(auth.Auth.Persistence.LOCAL);
     return new Promise((resolve,reject)=>{
-      this.Auth.auth.signInWithEmailAndPassword(email,password).then(
-        userData=>resolve(userData),
-        err=>reject(err));
+      this.Auth.auth.signInWithEmailAndPassword(email,password).then((userData)=>{
+        resolve(userData);
+      }).catch((err)=>{
+        reject(err);
+      });
     });
   };
 

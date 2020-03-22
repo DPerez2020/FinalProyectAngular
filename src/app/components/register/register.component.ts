@@ -21,8 +21,8 @@ export class RegisterComponent implements OnInit {
  //Inicializando el formulario
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      userEmail: ['', [Validators.required, Validators.email]],
-      userPassword: ['', [Validators.required, Validators.minLength(8),Validators.maxLength(16)]],
+      userEmail: ['', [Validators.required,Validators.email]],
+      userPassword: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -43,7 +43,6 @@ export class RegisterComponent implements OnInit {
 
   // Funcion para ir al login
   goToLogin() {
-    this.router.navigate(['/login']);
-    location.reload();
+    this.router.navigate(['/dashboard']);
   }
 }

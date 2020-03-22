@@ -4,21 +4,21 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Foto</th>
                     <th scope="col">Restaurante</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Hora</th>
+                    <th scope="col">Size</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of items | paginate: { itemsPerPage: 10, currentPage: PageActual}; index as i">
-                    <td scope="col">{{i+1}}</td>
-                    <td scope="col">Foto</td>
-                    <td scope="col">Restaurante</td>
-                    <td scope="col">Fecha</td>
-                    <td scope="col">Hora</td>
+                <tr *ngFor="let item of items2 | paginate: { itemsPerPage: 10, currentPage: PageActual}; index as i">
+                    <td scope="col"> <b>{{item.index+1}}</b></td>
+                    <td scope="col"> <b>{{item.restaurant}}</b></td>
+                    <td scope="col"> <b>{{item.Date}}</b></td>
+                    <td scope="col"> <b>{{item.Time}}</b></td>
+                    <td scope="col"> <b>{{item.Size}}</b></td>
                     <td>
-                        <button class="btn btn-danger">Eliminar</button>
+                        <button class="btn btn-danger" (click)="eliminar(item.key)">Eliminar</button>
                     </td>
                 </tr>
             </tbody>
