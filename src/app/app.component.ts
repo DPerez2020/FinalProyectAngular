@@ -1,5 +1,7 @@
 import { RouterModule,Router,NavigationEnd } from '@angular/router';
 import { Component,OnInit } from '@angular/core';
+import{NgxSpinnerService} from 'ngx-spinner';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,8 +9,7 @@ import { Component,OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  
-  constructor(private router:Router){
+  constructor(private router:Router,private spinnerService:NgxSpinnerService){
     this.router.events.subscribe(event=>{
       if(event instanceof NavigationEnd){
         if(event.url==='/'){
@@ -20,9 +21,15 @@ export class AppComponent implements OnInit {
       }
     });
   }
-  public hideElement:boolean=false;
   ngOnInit(){
-
+    this.spinner();
   }
-  title = 'FinalProyectAngular';
+  spinner():void{
+    this.spinnerService.show();
+    setTimeout(()=>{
+      this.spinnerService.hide();
+    },2000);
+  }
+  public hideElement:boolean=false;
+  title = 'Restaurant Finder';
 }

@@ -1,1 +1,28 @@
-<p>reserve works!</p>
+<div class="row">
+    <div class="col">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Foto</th>
+                    <th scope="col">Restaurante</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Hora</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items | paginate: { itemsPerPage: 10, currentPage: PageActual}; index as i">
+                    <td scope="col">{{i+1}}</td>
+                    <td scope="col">Foto</td>
+                    <td scope="col">Restaurante</td>
+                    <td scope="col">Fecha</td>
+                    <td scope="col">Hora</td>
+                    <td>
+                        <button class="btn btn-danger">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="PageActual = $event"></pagination-controls>
+    </div>
+</div>

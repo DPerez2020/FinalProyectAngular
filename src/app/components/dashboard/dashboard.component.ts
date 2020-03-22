@@ -1,9 +1,9 @@
+import { FirebaseCRUDService } from './../../service/firebaseCRUD/firebase-crud.service';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { auth } from 'firebase/app';
 import { AuthService } from './../../service/auth/auth.service';
 import { Router } from '@angular/router';
 import { ProviderService } from './../../service/provider/provider.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,19 +12,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private serv:ProviderService,private router:Router,private AuthService:AuthService,private AngularFireDatabase:AngularFireDatabase) { }
-
+  constructor(private serv:ProviderService,private router:Router) { }
+  
   restaurant:any;
 
-  ngOnInit(): void {
-    this.serv.getRestaurant("Chicago").subscribe((e:any)=>{
+  ciudad:any;
+
+  buscar(e){
+    this.serv.getAllRestaurant(e).subscribe((e:any)=>{
       this.restaurant = e.restaurants;
-      console.log(e.restaurants);
     });
   }
 
-  reservar(){
-    this.router.navigate(['reserve']); 
+  ngOnInit(): void {
+
   }
 
+  reservar(){
+    //this.dbService.insertReservation();
+    this.router.navigate(['details']); 
+  }
 }

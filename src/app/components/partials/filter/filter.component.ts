@@ -1,35 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { startWith, map } from 'rxjs/operators'
-
+import { ProviderService } from './../../../service/provider/provider.service';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+//import {CreateNewAutocompleteGroup, SelectedAutocompleteItem, NgAutoCompleteComponent} from "ng-auto-complete";
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.css']
+  styleUrls: ['./filter.component.css'],
+  providers:[ProviderService]
 })
 export class FilterComponent implements OnInit {
+  
+  public keyword = "name";
+  public data$=[];
+  public keywords = ["name"];
 
-  constructor() { }
-  searchText = new Subject();
-  results: Observable<string[]>;
-  data: any = [
-    'red',
-    'green',
-    'blue',
-    'cyan',
-    'magenta',
-    'yellow',
-    'black',
-  ];
-
-  ngOnInit(): void {
-    this.results = this.searchText.pipe(
-      startWith(''),
-      map((value: string) => this.filter(value))
-    );
+  constructor(private dataSvc: ProviderService) {
+    this.getData();
   }
-  filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.data.filter((item: string) => item.toLowerCase().includes(filterValue));
+  ngOnInit(): void {
+  }
+  
+  @Output() ciudad= new EventEmitter<string>();
+
+  Selected(e) {
+    //this.ciudad=e.name;
+    this.ciudad.emit(e.name);
+    }
+
+  getData(): void {
+    this.dataSvc.getAllCitiest().subscribe((data:any)=>{
+      let algo= Array.from(data.cities);
+      algo.forEach((element,index) => {
+        this.data$.push({id:index,name:element});
+      });
+    });
   }
 }

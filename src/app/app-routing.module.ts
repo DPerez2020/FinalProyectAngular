@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard]},//User routes
   {path:'profile',component:ProfileComponent,canActivate:[AuthGuard]},
   {path:'reserve',component:ReserveComponent,canActivate:[AuthGuard]},
-  {path:'details',component:DetailsComponent,canActivate:[AuthGuard]},
+  {path:'details/:id',component:DetailsComponent,canActivate:[AuthGuard]},
   {path: '**',redirectTo: 'Not-found'},
 ];
 

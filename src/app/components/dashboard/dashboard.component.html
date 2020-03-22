@@ -1,4 +1,4 @@
-<app-filter></app-filter>
+<app-filter (ciudad)='buscar($event)'></app-filter>
 <div class="row mx-md-n5">   
     <div class="col-md-3 p-md-3 p-ml-3" *ngFor="let item of restaurant">
         <div class="card p-3 bg-light border-secondary mb-3" style="max-width: 50rem;">
@@ -8,13 +8,15 @@
                 <Address class="card-text"> <b>Direccion: </b>{{item.address}}</Address>
             </div>
             <ul class="list-group list-group-flush">
+                {{item.id}}
+                <li class="list-group-item"><b>Telefono: </b>{{item.phone}}</li>
                 <li class="list-group-item"><b>Ciudad: </b>{{item.city}}</li>
                 <li class="list-group-item"><b>Area: </b>{{item.area}}</li>
                 <li class="list-group-item"><b>Pais: </b>{{item.country}}</li>
             </ul>
             <div class="card-body">
-                <a href="details" class="btn btn-primary btn-block">Mas informacion</a>
-                <a (click)="reservar()" class="btn btn-danger btn-block">Reservar</a>
+                <a [routerLink]="['/details', item.id]" class="btn btn-primary btn-block">Mas informacion</a>
+                <a [routerLink]="['/details', item.id]" class="btn btn-danger btn-block">Reservar</a>
             </div>
         </div>
     </div>

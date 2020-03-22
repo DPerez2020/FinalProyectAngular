@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReserveComponent implements OnInit {
 
+  PageActual:number=1;
   constructor() { }
 
+  items=['Hola','bicht','Hola','bicht','Hola','bicht','Hola','bicht','Hola','bicht','Hola','bicht',
+  'Hola','bicht','Hola','bicht','Hola','bicht','Hola','bicht','Hola','bicht','Hola','bicht',];
   ngOnInit(): void {
   }
-
 }

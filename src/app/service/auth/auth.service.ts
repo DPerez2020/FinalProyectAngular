@@ -39,7 +39,6 @@ export class AuthService {
       .then(() => {
         // Creando id en el sistema para los usuarios
         const userID = this.Auth.auth.currentUser.uid;
-        console.log(userID)
         const systemID = Date.now();
         // Creando id en el sistema para los usuarios
         

@@ -1,3 +1,4 @@
+import { Observable, observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -7,10 +8,15 @@ import { Injectable } from '@angular/core';
 export class ProviderService {
 
   constructor(private http:HttpClient) { }
-  getRestaurant(city:string){
-    return this.http.get("https://opentable.herokuapp.com/api/restaurants?city="+city);
+  getAllRestaurant(city:string){
+    return this.http.get(`https://opentable.herokuapp.com/api/restaurants?city=${city}`);
   }
-  getCities(){
+
+  getAllCitiest() {
     return this.http.get("https://opentable.herokuapp.com/api/cities");
+  }
+
+  getSingleRestaurant(id){
+    return this.http.get(`https://opentable.herokuapp.com/api/restaurants/${id}`);
   }
 }

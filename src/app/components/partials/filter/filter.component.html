@@ -1,17 +1,19 @@
-<!--
-<div class="md-form">
-    <input
-      type="text"
-      class="completer-input form-control mdb-autocomplete"
-      [ngModel]="searchText | async"
-      (ngModelChange)="searchText.next($event)"
-      [mdbAutoCompleter]="auto"
-      placeholder="Choose your color"
-    />
-    <mdb-auto-completer #auto="mdbAutoCompleter" textNoResults="I have found no results :(">
-      <mdb-option *ngFor="let option of results | async" [value]="option">
-        {{ option }}
-      </mdb-option>
-    </mdb-auto-completer>
-  </div>
--->
+<div class="container">
+  <h2>Buscar</h2>
+  <ng-autocomplete
+  [data]="data$"
+  [searchKeyword]="keyword"
+  [itemTemplate]="itemTemplate"
+  [notFoundTemplate]="notFoundTemplate"
+  (selected)="Selected($event)"
+  placeholder="Enter the name"
+  >
+  </ng-autocomplete>
+  <ng-template #itemTemplate let-item>
+  <a [innerHTML]="item.name"></a>
+  </ng-template>
+  
+  <ng-template #notFoundTemplate let-notFound>
+    <div [innerHTML]="notFound"></div>
+  </ng-template>
+</div>

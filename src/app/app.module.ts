@@ -1,7 +1,6 @@
 import { DetailsComponent } from './components/details/details.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,7 +23,10 @@ import { HeroComponent } from './components/partials/hero/hero.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ReserveComponent } from './components/reserve/reserve.component';
 import { FilterComponent } from './components/partials/filter/filter.component';
-
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -44,8 +46,13 @@ import { FilterComponent } from './components/partials/filter/filter.component';
     FormsModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AutocompleteLibModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
+    NgxPaginationModule,
   ],
+  schemas:[],
   providers: [],
   bootstrap: [AppComponent],
 })
